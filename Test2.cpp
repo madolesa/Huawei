@@ -6,7 +6,7 @@ using namespace std;
 
 // This function gets vector and integer and returns largest sum of not more than four elements from given vector not
 // greater than given integer
-long long LargestSumNotGreaterThanGivenNumber(const vector<long long>& nums, long long NUM) {
+long long LargestSumNotGreaterThanGivenInteger(const vector<long long>& nums, long long NUM) {
     // Since we can always take nothing from the vector, we can assign an initial value of 0 to the answer
     long long largest_sum = 0;
 
@@ -51,7 +51,7 @@ signed main() {
             cin >> nums[i];
         }
         cout << "Case " << ++case_num << ": ";
-        cout << LargestSumNotGreaterThanGivenNumber(nums, m) << endl;
+        cout << LargestSumNotGreaterThanGivenInteger(nums, m) << endl;
         cout << endl;
         cin >> n >> m;
     }
