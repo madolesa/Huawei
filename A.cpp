@@ -4,7 +4,7 @@
 
 using namespace std;
 
-// This function get two numbers represented as a string and returns their sum as string.
+// This function gets two numbers represented as a string and returns their sum as string.
 string StringSum(const string& num1, const string& num2) {
     string res = "";
     // Using the pointers to the current element for each string, that runs in parallel, implement column addition
