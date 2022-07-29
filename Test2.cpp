@@ -4,9 +4,9 @@
 
 using namespace std;
 
-// This function gets vector and integer and returns largest sum of not more than four elements from given vector less
-// than given integer
-long long LargestSumOfNotMoreThan4ElementsLessThanGivenNumber(const vector<long long>& nums, long long NUM) {
+// This function gets vector and integer and returns largest sum of not more than four elements from given vector not
+// greater than given integer
+long long LargestSumNotGreaterThanGivenNumber(const vector<long long>& nums, long long NUM) {
     // Since we can always take nothing from the vector, we can assign an initial value of 0 to the answer
     long long largest_sum = 0;
 
@@ -23,19 +23,19 @@ long long LargestSumOfNotMoreThan4ElementsLessThanGivenNumber(const vector<long 
     sort(sums.begin(), sums.end());
 
     // For each element from vector "sums" we try to find another element from this vector, so that their sum is
-    // maximum less than M
+    // maximum not greater than NUM
     for (int i = 0; i < sums.size(); ++i) {
-        auto lb = lower_bound(sums.begin(),
+        auto ub = upper_bound(sums.begin(),
                               sums.end(),
                               NUM - sums[i]);
-        if (lb == sums.end() || lb == sums.begin()) {
-            if (sums[i] < NUM) {
+        if (ub == sums.begin()) {
+            if (sums[i] <= NUM) {
                 largest_sum = max(largest_sum, sums[i]);
             }
             continue;
         }
         largest_sum = max(largest_sum,
-                          sums[i] + *(--lb));
+                          sums[i] + *(--ub));
     }
 
     return largest_sum;
@@ -51,7 +51,7 @@ signed main() {
             cin >> nums[i];
         }
         cout << "Case " << ++case_num << ": ";
-        cout << LargestSumOfNotMoreThan4ElementsLessThanGivenNumber(nums, m) << endl;
+        cout << LargestSumNotGreaterThanGivenNumber(nums, m) << endl;
         cout << endl;
         cin >> n >> m;
     }
